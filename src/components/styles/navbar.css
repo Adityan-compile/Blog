@@ -1,7 +1,3 @@
-.brand-text{
-    font-family: 'Dancing Script', cursive;
-    font-size: 2.3rem;    
-}
 
 .nav-btn{
     font-size: 2rem;
@@ -10,3 +6,8 @@
 .navbar-nav{
    margin-left: auto;
 }
+
+.brand-text{
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.3rem;    
+  }
