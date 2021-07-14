@@ -1,28 +1,47 @@
 import React from "react";
-import "./styles/navbar.css";
-// import ReactDOM from 'react-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import './styles/navbar.css';
 
 function Navbar() {
   return (
-    <div className="navbar">
-      <nav className="nav p-3">
-          <div>
-            <h1 className="brand-text">
-              <span>&#60;</span>
-              <span>Codeable</span>
-              <span>/&#62;</span>
-            </h1>
-          </div>
-          <div>
-            <input type="checkbox" id="click" />
-            <label for="click" className="toggle">
-             <FontAwesomeIcon icon={faBars} />
-            </label>
+    <header>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-lg">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="/">
+            <span className="brand-text">&lt;Codable/&gt;</span>
+          </a>
+          <button
+            className="navbar-toggler shadow"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+           <i className="fa fa-bars nav-btn"></i>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav">
+                  <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="/">
+                      Home
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/">
+                      Features
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/">
+                      Pricing
+                    </a>
+                  </li>
+                </ul>
+            </div>
           </div>
       </nav>
-    </div>
+    </header>
   );
 }
 

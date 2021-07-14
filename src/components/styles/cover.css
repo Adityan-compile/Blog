@@ -1,0 +1,6 @@
+.cover {
+  height: 640px;
+  width: 100%;
+  background-image: url("../../assets/cover.jpg");
+  background-size: cover;
+}
