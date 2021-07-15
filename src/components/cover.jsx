@@ -13,7 +13,7 @@ const Cover = () => {
             <div>
 
               <span className="p-1 pb-4">
-                <Link className="btn btn-outline-light fw-bold border-3">Login</Link>
+                <Link className="btn btn-outline-light fw-bold border-3" to={'/login'}>Login</Link>
               </span>
 
               <span className=" p-1 pb-4">
