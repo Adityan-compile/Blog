@@ -119,8 +119,9 @@ function SignupForm() {
             Character.
           </div>
         </div>
-        <Link to={'/login'} className="link-info p-2 text-decoration-none">Have an Account? Login</Link>
-
+        <Link to={'/login'} className="link-info text-decoration-none">Have an Account? Login</Link>
+        <br />
+        <br />
         <button type="submit" className="btn btn-primary">
           Sign Up
         </button>

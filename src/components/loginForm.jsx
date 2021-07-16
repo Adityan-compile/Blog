@@ -62,10 +62,12 @@ function LoginForm() {
             aria-required="true"
           />
         </div>
-        <Link to={'/signup'} className="link-info p-2 text-decoration-none">Don't Have an Account? Create One</Link>
-        <button type="submit" className="btn btn-primary">
-          Login
-        </button>
+        <Link to={'/signup'} className="link-info text-decoration-none">Don't Have an Account? Create One</Link>
+        <br />
+        <br />
+          <button type="submit" className="btn btn-primary">
+            Login
+          </button>
       </form>
     </div>
   );
