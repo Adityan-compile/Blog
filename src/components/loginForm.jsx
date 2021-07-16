@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Link, useHistory } from 'react-router-dom';
-import FirebaseContext from "../store/firebaseContext";
+import {FirebaseContext} from "../store/Context";
 
 function LoginForm() {
 
@@ -18,15 +18,16 @@ function LoginForm() {
     const handleSubmit = (e)=>{
         e.preventDefault();
         firebase.auth().signInWithEmailAndPassword(email, password).then((res)=>{
-            setMessage("LoggedIn");
-            setTimeout(()=>history.pushState('/'), 2000);
+            setMessage("LoggedIn !!");
+            setTimeout(()=>history.push('/'), 2000);
         }).catch(err=>{
-            console.log(err);
+          setMessage("");  
+          setError(err.message);
         });
     };
 
   return (
-    <div>
+    <div className="body-text">
       {error && <p className="text-danger text-center">{error}</p>}
       {message && <p className="text-success text-center">{message}</p>}
       <form onSubmit={handleSubmit}>
@@ -61,9 +62,9 @@ function LoginForm() {
             aria-required="true"
           />
         </div>
-        <Link to={'/login'} className="link-info p-2 text-decoration-none">Don't Have an Account? Create One</Link>
+        <Link to={'/signup'} className="link-info p-2 text-decoration-none">Don't Have an Account? Create One</Link>
         <button type="submit" className="btn btn-primary">
-          Sign Up
+          Login
         </button>
       </form>
     </div>

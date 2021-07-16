@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import FirebaseContext from "../store/firebaseContext";
+import {FirebaseContext} from "../store/Context";
 import { useHistory, Link } from "react-router-dom";
 
 function SignupForm() {
@@ -59,7 +59,7 @@ function SignupForm() {
   };
 
   return (
-    <div>
+    <div className="body-text">
       {error && <p className="text-danger text-center">{error}</p>}
       {message && <p className="text-success text-center">{message}</p>}
       <form onSubmit={handleSubmit}>
