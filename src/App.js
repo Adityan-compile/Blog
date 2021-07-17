@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import React,{ useEffect, useContext } from "react";
-
+import { AuthGuard } from "./guard";
+import { AuthContext, FirebaseContext } from "./store/Context";
 
 // Import Components and Pages
 import Navbar from "./components/navbar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import { AuthGuard } from "./guard";
-import { AuthContext, FirebaseContext } from "./store/Context";
+import CreatePost from "./pages/CreatePost";
 
 function App() {
   const {user, setUser} = useContext(AuthContext);
@@ -25,6 +25,7 @@ function App() {
           <Route exact path={"/"}>
             <Home />
           </Route>
+          <Route path={'/posts/new'} component={CreatePost} />
           <Route path={"/signup"}>
             <AuthGuard Component={Signup} />
           </Route>

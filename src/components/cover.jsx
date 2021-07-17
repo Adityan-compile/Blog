@@ -14,7 +14,7 @@ const Cover = () => {
         </h1>
         <div>
           {user ? (
-            <button className="btn btn-outline-light">Create Post</button>
+            <Link className="btn btn-outline-light fw-bold border-2" to={'/posts/new'}>Create Post</Link>
           ) : (
             <div>
               <span className="p-1 pb-4">

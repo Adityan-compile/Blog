@@ -1,14 +1,13 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../store/Context";
-import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 const RouteGuard = ({ Component }) => {
   const { user } = useContext(AuthContext);
-  const history = useHistory();
   if (user) {
     return <Component />;
   } else {
-    history.push("/login");
+   return <Redirect to={'/login'} />
   }
   // return (
   //     <div>
@@ -19,10 +18,8 @@ const RouteGuard = ({ Component }) => {
 
 export const AuthGuard = ({ Component }) => {
   const { user } = useContext(AuthContext);
-  const history = useHistory();
-  console.log(user);
   if (user) {
-    history.push("/");
+    return <Redirect to={'/'}/>
   } else {
     return <Component />;
   }
