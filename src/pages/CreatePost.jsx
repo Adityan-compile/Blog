@@ -8,13 +8,15 @@ function CreatePost() {
     const [title,setTitle] = useState("");
     const [description,setDescription] = useState("");
     const [body,setBody] = useState("");
-    const [date,setDate] = useState(new Date());
+    const date = new Date().toLocaleDateString('en-IN');
     const [thumbnail, setThumbnail] = useState("");
 
-    const handleTitleChange = (val)=>setTitle;
-    const handleDescriptionChange = (val)=>setDescription;
-    const handleBodyChange = (val)=>setBody;
-    const handleThumbnailChange = (val)=>setThumbnail;
+    const handleTitleChange = setTitle;
+    const handleDescriptionChange = setDescription;
+    const handleThumbnailChange = setThumbnail;
+    const handleBodyChange = setBody;
+
+    console.log({ title, body, date, thumbnail, description })
 
   return (
     <div>
@@ -22,10 +24,10 @@ function CreatePost() {
         <h3 className="p-2 mt-3 text-center title-text">Create New Post</h3>
       </div>
       <div>
-          <PostForm  />
+          <PostForm functions={{handleTitleChange, handleDescriptionChange, handleThumbnailChange}} />
       </div>
       <div>
-        <Editor />
+        <Editor id="editor" Handler={handleBodyChange} />
       </div>
       <div className="p-4">
           <button type="submit" className="btn btn-success">

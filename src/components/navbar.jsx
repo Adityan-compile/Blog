@@ -5,6 +5,7 @@ import "./styles/navbar.css";
 
 function Navbar() {
   const history = useHistory();
+  //eslint-disable-nextline
   const { user } = useContext(AuthContext);
   const { firebase } = useContext(FirebaseContext);
   const logout = () => {
@@ -15,7 +16,7 @@ function Navbar() {
         history.push("/login");
       })
       .catch((err) => {
-        alert("Error Loggin Out");
+        alert("Error Logging Out");
       });
   };
   return (
@@ -76,7 +77,7 @@ function Navbar() {
                 )}
                 {user && (
                   <li className="nav-item">
-                    <a className="nav-link active" onClick={logout}>
+                    <a role="button" className="nav-link active" onClick={logout}>
                       <span>Logout</span>
                     </a>
                   </li>
