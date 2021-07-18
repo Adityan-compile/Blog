@@ -1,26 +1,22 @@
-import React, { Fragment, useState } from 'react';
-import ReactQuill from 'react-quill'; 
+import React, { Fragment, useState } from "react";
 import sanitizeHtml from 'sanitize-html';
-import Render from './render';
+import MDEditor from "@uiw/react-md-editor";
+import Render from "./render";
 
+function Editor(props) {
+  const [html, setHtml] = useState("");
+  const handler= (HTML) => {
+    let sanitized = sanitizeHtml(HTML);
+    setHtml(sanitized);
+  };
 
-function Editor() {
-    const [html,setHtml] = useState("");
-    const handleChange = (text)=>{
-        let sanitized = sanitizeHtml(text);
-        setHtml(sanitized);
-    }
-    return (
-        <Fragment>
-            <div className="p-4 m-4 mt-4 shadow-lg">
-               <ReactQuill value={html} onChange={handleChange} />
-            </div>
-            <h1 className="p-2 text-center title-text">Preview:</h1>
-            <div>
-                <Render html={html} />
-            </div>
-        </Fragment>
-    )
+  return (
+    <Fragment>
+      <div className="p-4 m-4 mt-4 shadow-lg">
+        <MDEditor value={html} onChange={handler} />
+      </div>
+    </Fragment>
+  );
 }
 
 export default Editor;
