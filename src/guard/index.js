@@ -2,32 +2,21 @@ import React, { useContext } from "react";
 import { AuthContext } from "../store/Context";
 import { Redirect } from "react-router-dom";
 
-const RouteGuard = ({ Component }) => {
+export const RouteGuard = ({ children, User }) => {
   const { user } = useContext(AuthContext);
-  if (user) {
-    return <Component />;
+  if (User) {
+    return children;
   } else {
    return <Redirect to={'/login'} />
   }
-  // return (
-  //     <div>
-
-  //     </div>
-  // );
 };
 
-export const AuthGuard = ({ Component }) => {
+export const AuthGuard = ({ children }) => {
   const { user } = useContext(AuthContext);
   if (user) {
     return <Redirect to={'/'}/>
   } else {
-    return <Component />;
+    return children;
   }
-  // return (
-  //     <div>
-
-  //     </div>
-  // );
 };
 
-export default RouteGuard;

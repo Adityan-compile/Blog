@@ -50,12 +50,10 @@ function CreatePost() {
                 setTimeout(() => history.push("/"), 2000);
               })
               .catch((err) => {
-                console.log('add err');
                 setError(err.message);
               });
           })
           .catch((err) => {
-            console.log('file err');
             setError(err.message);
           });
       })

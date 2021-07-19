@@ -77,9 +77,9 @@ function Navbar() {
                 )}
                 {user && (
                   <li className="nav-item">
-                    <a role="button" className="nav-link active" onClick={logout}>
+                    <span role="button" className="nav-link active" onClick={logout}>
                       <span>Logout</span>
-                    </a>
+                    </span>
                   </li>
                 )}
             </ul>

@@ -1,6 +1,6 @@
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import React,{ useEffect, useContext } from "react";
-import { AuthGuard } from "./guard";
+import { AuthGuard, RouteGuard } from "./guard";
 import { AuthContext, FirebaseContext } from "./store/Context";
 
 // Import Components and Pages
@@ -9,6 +9,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import CreatePost from "./pages/CreatePost";
+import Error from "./pages/error";
+import ViewPost from "./pages/ViewPost";
 
 function App() {
   const {user, setUser} = useContext(AuthContext);
@@ -22,16 +24,26 @@ function App() {
     <div className="App">
         <Router>
           <Navbar />
-          <Route exact path={"/"}>
-            <Home />
+          <Switch>
+          <Route exact path={"/"} component={ Home } />
+          <Route path={'/posts/new'}>
+            <RouteGuard User={user}>
+              <CreatePost/>
+            </RouteGuard>
           </Route>
-          <Route path={'/posts/new'} component={CreatePost} />
           <Route path={"/signup"}>
-            <AuthGuard Component={Signup} />
+            <AuthGuard>
+              <Signup/>
+            </AuthGuard>
           </Route>
           <Route path={"/login"}>
-          <AuthGuard Component={Login} />
+          <AuthGuard>
+            <Login />
+          </AuthGuard>
           </Route>
+          { user && (<Route path={'/posts/view/:id'}component={ViewPost}/>) }
+          <Route component={ Error } />
+          </Switch>
         </Router>
     </div>
   );

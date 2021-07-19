@@ -12,7 +12,12 @@ function Recommended() {
     db.collection("posts")
       .get()
       .then(snapshot => {
-        const res = _.shuffle(snapshot.docs.map((doc) => doc.data()));
+        const res = _.shuffle(snapshot.docs.map((doc) => {
+          let id = doc.id;
+          doc = doc.data();
+          doc.id = id;
+          return doc;
+        }));
         setPosts(res);
       }).catch(err=>setError(err.message));
   }, [db]);
