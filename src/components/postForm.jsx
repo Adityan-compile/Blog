@@ -37,7 +37,7 @@ function PostForm({ functions }) {
           </label>
           <div className="row">
             <div className="col-md-6">
-              <input className="form-control" type="file" id="thumbnail" onChange={(e)=>{
+              <input className="form-control" type="file" id="thumbnail" accept="image/*" onChange={(e)=>{
                 setThumbnail(e.target.files[0]);
                 functions.handleThumbnailChange(e.target.files[0])
               }} />
