@@ -16,3 +16,10 @@
 .body-text{
   font-family: 'Roboto', sans-serif;
 }
+
+@media(prefers-color-scheme: dark){
+  *{
+    background-color: rgba(44, 44, 44, 0);
+    color: #fff;
+  }
+}

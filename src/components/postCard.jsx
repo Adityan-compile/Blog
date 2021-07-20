@@ -9,7 +9,7 @@ function PostCard({ post }) {
         <Link to={`/posts/view/${post.id}`} className="text-decoration-none">
         <div className="card shadow-lg mx-auto rounded text-dark text-decoration-none" style={{ width: "18rem" }}>
           <img
-            src="https://source.unsplash.com/random"
+            src={ post.thumbnail || "https://images.unsplash.com/photo-1483058712412-4245e9b90334?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGJsb2clMjBkZWZhdWx0fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"}
             className="card-img-top"
             alt="Post Thumbnail"
           />

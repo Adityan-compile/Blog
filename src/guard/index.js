@@ -3,7 +3,6 @@ import { AuthContext } from "../store/Context";
 import { Redirect } from "react-router-dom";
 
 export const RouteGuard = ({ children, User }) => {
-  const { user } = useContext(AuthContext);
   if (User) {
     return children;
   } else {

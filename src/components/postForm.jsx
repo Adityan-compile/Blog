@@ -40,9 +40,14 @@ function PostForm({ functions }) {
               <input className="form-control" type="file" id="thumbnail" accept="image/*" onChange={(e)=>{
                 setThumbnail(e.target.files[0]);
                 functions.handleThumbnailChange(e.target.files[0])
-              }} />
+              }}
+              aria-describedby="fileHelp" 
+              />
+          <div id="fileHelp" className="form-text">
+            Make Sure to Upload High Resolution Rectangular Images For Maximum Quality.
+          </div>
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 p-2">
               <img src={thumbnail ? URL.createObjectURL(thumbnail) : ""} alt="" className="img-thumbnail img-fluid"/>
             </div>
           </div>

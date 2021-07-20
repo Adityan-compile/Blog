@@ -9,18 +9,20 @@ function Recommended() {
   const [posts, setPosts] = useState([]);
   const db = firebase.firestore();
   useEffect(() => {
-    db.collection("posts")
+      db
+      .collection("posts")
       .get()
       .then(snapshot => {
-        const res = _.shuffle(snapshot.docs.map((doc) => {
+        const docs = _.sortBy(snapshot.docs.map((doc) => {
           let id = doc.id;
           doc = doc.data();
           doc.id = id;
           return doc;
-        }));
-        setPosts(res);
+        }), ['date']);
+        setPosts(docs);
       }).catch(err=>setError(err.message));
-  }, [db]);
+  },[db]);
+
   return (
     <div className="p-2">
       <div>
