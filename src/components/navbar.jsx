@@ -45,12 +45,12 @@ function Navbar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to={"/"}>
+                <Link className="nav-link active" aria-current="page" to={"/search"}>
                   Search
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to={"/"}>
+                <Link className="nav-link active" aria-current="page" to={"/posts/browse"}>
                   Browse
                 </Link>
               </li>

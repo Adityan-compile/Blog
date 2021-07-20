@@ -11,6 +11,7 @@ import Signup from "./pages/Signup";
 import CreatePost from "./pages/CreatePost";
 import Error from "./pages/error";
 import ViewPost from "./pages/ViewPost";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   const {user, setUser} = useContext(AuthContext);
@@ -41,6 +42,7 @@ function App() {
             <Login />
           </AuthGuard>
           </Route>
+          <Route path={'/search'} component={SearchPage} />
           { user && (<Route path={'/posts/view/:id'}component={ViewPost}/>) }
           <Route component={ Error } />
           </Switch>
