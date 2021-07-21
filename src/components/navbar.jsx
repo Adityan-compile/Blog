@@ -59,7 +59,7 @@ function Navbar() {
                       <Link
                         className="nav-link active"
                         aria-current="page"
-                        to={"/"}
+                        to={"/user/profile"}
                       >
                         <span className="fw-bold">{user.displayName}</span>
                       </Link>

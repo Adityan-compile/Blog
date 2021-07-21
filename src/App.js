@@ -13,6 +13,7 @@ import Error from "./pages/error";
 import ViewPost from "./pages/ViewPost";
 import SearchPage from "./pages/SearchPage";
 import Browse from "./pages/Browse";
+import Profile from "./pages/Profile";
 
 function App() {
   const { user, setUser } = useContext(AuthContext);
@@ -26,6 +27,7 @@ function App() {
     <div className="App">
       <Router>
         <Navbar />
+
         <Switch>
           <Route exact path={"/"} component={Home} />
 
@@ -45,6 +47,12 @@ function App() {
             <AuthGuard>
               <Login />
             </AuthGuard>
+          </Route>
+
+          <Route path={["/user/profile"]}>
+            <RouteGuard User={user}>
+              <Profile />
+            </RouteGuard>
           </Route>
 
           <Route path={["/search", "/posts/search"]} component={SearchPage} />
