@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import React,{ useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { AuthGuard, RouteGuard } from "./guard";
 import { AuthContext, FirebaseContext } from "./store/Context";
 
@@ -12,41 +12,50 @@ import CreatePost from "./pages/CreatePost";
 import Error from "./pages/error";
 import ViewPost from "./pages/ViewPost";
 import SearchPage from "./pages/SearchPage";
+import Browse from "./pages/Browse";
 
 function App() {
-  const {user, setUser} = useContext(AuthContext);
-  const {firebase} = useContext(FirebaseContext);
-  useEffect(()=>{
-    firebase.auth().onAuthStateChanged((user)=>{
+  const { user, setUser } = useContext(AuthContext);
+  const { firebase } = useContext(FirebaseContext);
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
       setUser(user);
     });
-  })
+  });
   return (
     <div className="App">
-        <Router>
-          <Navbar />
-          <Switch>
-          <Route exact path={"/"} component={ Home } />
-          <Route path={'/posts/new'}>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route exact path={"/"} component={Home} />
+
+          <Route path={["/new", "/create", "/posts/new", "/posts/create"]}>
             <RouteGuard User={user}>
-              <CreatePost/>
+              <CreatePost />
             </RouteGuard>
           </Route>
-          <Route path={"/signup"}>
+
+          <Route path={["/signup", "/user/signup"]}>
             <AuthGuard>
-              <Signup/>
+              <Signup />
             </AuthGuard>
           </Route>
-          <Route path={"/login"}>
-          <AuthGuard>
-            <Login />
-          </AuthGuard>
+
+          <Route path={["/login", "/user/login"]}>
+            <AuthGuard>
+              <Login />
+            </AuthGuard>
           </Route>
-          <Route path={'/search'} component={SearchPage} />
-          { user && (<Route path={'/posts/view/:id'}component={ViewPost}/>) }
-          <Route component={ Error } />
-          </Switch>
-        </Router>
+
+          <Route path={["/search", "/posts/search"]} component={SearchPage} />
+
+          <Route path={["/browse", "/posts/browse"]} component={Browse} />
+
+          {user && <Route path={"/posts/view/:id"} component={ViewPost} />}
+
+          <Route component={Error} />
+        </Switch>
+      </Router>
     </div>
   );
 }
