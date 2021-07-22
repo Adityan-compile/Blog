@@ -57,11 +57,11 @@ function Search() {
             className="form-control"
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={(e)=>{
-              if(e.key === "Enter") return search()
+              if(e.key === "Enter") return search();
             }}
             value={query}
             placeholder="Search For Your Favourite Blog Posts !!"
-            aria-label="Recipient's username"
+            aria-label="Search Bar"
             aria-describedby="button-addon2"
           />
           <button
