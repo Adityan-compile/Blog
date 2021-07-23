@@ -78,7 +78,9 @@ function Search() {
       <div className="posts">
         <div className="row">
           {posts.map((res, idx) => (
+            <div className="col-md-6 mx-auto p-4">
             <PostCard post={res} key={idx} />
+            </div>
           ))}
         </div>
       </div>

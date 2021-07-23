@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { FirebaseContext } from "../store/Context";
 import "./styles/card.css";
 
-function PostCard({ post, page }) {
+function PostCard({ post, page, handleDeletePost }) {
   return (
-    <div className="col-md-6 mx-auto p-4">
       <div className="container text-center">
         <Link to={`/posts/view/${post.id}`} className="text-decoration-none">
           <div
@@ -30,7 +28,10 @@ function PostCard({ post, page }) {
               <br />
               {page === "profile" && (
                 <span className="p-2">
-                  <Link className="btn btn-danger" to={'/'}>Delete Post</Link>
+                  <button className="btn btn-danger" onClick={(e)=>{
+                    e.preventDefault()
+                    handleDeletePost(post.id)
+                  }}>Delete Post</button>
                 </span>
               )}
               <span className="streched-link text-dark fw-bold">
@@ -40,7 +41,6 @@ function PostCard({ post, page }) {
           </div>
         </Link>
       </div>
-    </div>
   );
 }
 

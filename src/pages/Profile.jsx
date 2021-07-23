@@ -35,20 +35,44 @@ function Profile() {
       });
   }, [db, userId]);
 
+  const deletePost = (postId) => {
+    const confirmation = window.confirm(
+      "Are You Sure You Want to Delete This Post?"
+    );
+    if (confirmation) {
+      db.collection("posts")
+        .doc(postId)
+        .delete()
+        .then(() => {
+          let el = document.getElementById(postId);
+          el.parentNode.removeChild(el);
+          setMessage("Post Deleted Successfully!!");
+        })
+        .catch((err) => {
+          setError(err.message);
+        });
+    }
+  };
+
   const deleteAccount = () => {
-    Auth.currentUser
-      .delete()
-      .then(() => {
-        setError("");
-        setMessage("Account Deleted Successfully");
-        setTimeout(() => {
-          history.push("/");
-        }, 2000);
-      })
-      .catch((err) => {
-        setMessage("");
-        setError(err.message);
-      });
+    const confirmation = window.confirm(
+      "Are You Sure You Want to Delete Your Account?"
+    );
+    if (confirmation) {
+      Auth.currentUser
+        .delete()
+        .then(() => {
+          setError("");
+          setMessage("Account Deleted Successfully");
+          setTimeout(() => {
+            history.push("/");
+          }, 2000);
+        })
+        .catch((err) => {
+          setMessage("");
+          setError(err.message);
+        });
+    }
   };
 
   return (
@@ -65,14 +89,23 @@ function Profile() {
           <button className="btn btn-warning">Edit Account</button>
         </span>
         <span className="p-2">
-          <button className="btn btn-danger" onClick={deleteAccount}>Delete Account</button>
+          <button className="btn btn-danger" onClick={deleteAccount}>
+            Delete Account
+          </button>
         </span>
       </div>
       <div className="posts pt-3">
         <h1 className="text-center title-text p-2 mb-2">Your Posts</h1>
         <div className="row">
-          {posts.map((res, idx) => (
-            <PostCard post={res} key={idx} page="profile" />
+          {posts.map((res) => (
+            <div className="col-md-6 mx-auto p-4" id={res.id}>
+              <PostCard
+                post={res}
+                key={res.id}
+                page="profile"
+                handleDeletePost={deletePost}
+              />
+            </div>
           ))}
         </div>
       </div>
