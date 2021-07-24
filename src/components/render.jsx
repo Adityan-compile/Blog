@@ -1,7 +1,9 @@
-import React from "react";
+import React, { lazy } from "react";
+
 import marked from 'marked';
-import sanitizeHtml from 'sanitize-html';
 import parse from "html-react-parser";
+
+const sanitizeHtml = lazy(()=>import('sanitize-html'));
 
 const Render = ({ markdown }) => {
   const styles = {

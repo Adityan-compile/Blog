@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, lazy } from "react";
 import { FirebaseContext } from "../store/Context";
-import PostCard from "../components/postCard";
+
+const PostCard  = lazy(()=>import("../components/postCard"));
 
 function Browse() {
     const [posts, setPosts] = useState([]);

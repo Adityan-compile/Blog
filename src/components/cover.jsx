@@ -1,10 +1,16 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import "./styles/cover.css";
+import React, { useContext, useEffect } from "react";
+
 import { AuthContext } from "../store/Context";
+import { Link } from "react-router-dom";
 
 const Cover = () => {
   const { user } = useContext(AuthContext);
+
+  useEffect(()=>{
+      import ("./styles/cover.css");
+      import("./styles/image.css");
+  },[]);
+
   return (
     <section className="cover">
       <div className="p-4 home-text pt-4 container">

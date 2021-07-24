@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { AuthContext, FirebaseContext } from "../store/Context";
-import "./styles/navbar.css";
+
+import ("./styles/navbar.css");
 
 function Navbar() {
   const history = useHistory();

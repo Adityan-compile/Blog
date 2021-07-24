@@ -1,5 +1,5 @@
-import React from "react";
-import LoginForm from "../components/loginForm";
+import React, { lazy } from "react";
+const LoginForm = lazy(()=>import("../components/loginForm"));
 
 function Login() {
   return (

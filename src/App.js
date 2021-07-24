@@ -1,19 +1,19 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import React, { useEffect, useContext } from "react";
-import { AuthGuard, RouteGuard } from "./guard";
 import { AuthContext, FirebaseContext } from "./store/Context";
+import { AuthGuard, RouteGuard } from "./guard";
+import React, { useContext, useEffect } from "react";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
-// Import Components and Pages
-import Navbar from "./components/navbar";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Browse from "./pages/Browse";
 import CreatePost from "./pages/CreatePost";
 import Error from "./pages/error";
-import ViewPost from "./pages/ViewPost";
-import SearchPage from "./pages/SearchPage";
-import Browse from "./pages/Browse";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+// Import Components and Pages
+import Navbar from "./components/navbar";
 import Profile from "./pages/Profile";
+import SearchPage from "./pages/SearchPage";
+import Signup from "./pages/Signup";
+import ViewPost from "./pages/ViewPost";
 
 function App() {
   const { user, setUser } = useContext(AuthContext);
