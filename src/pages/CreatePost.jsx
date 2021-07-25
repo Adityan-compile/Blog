@@ -1,8 +1,10 @@
-import React, { useContext, useState, lazy } from "react";
-import { FirebaseContext, AuthContext } from "../store/Context";
+import { AuthContext, FirebaseContext } from "../store/Context";
+import React, { lazy, useContext, useState } from "react";
+
 import { useHistory } from "react-router";
+
 const Editor = lazy(()=>import("../components/editor"));
-const PostForm = lazy(import("../components/postForm"));
+const PostForm = lazy(()=>import("../components/postForm"));
 
 function CreatePost() {
   const [title, setTitle] = useState("");

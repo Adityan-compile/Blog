@@ -1,9 +1,5 @@
-import React, { lazy } from "react";
-
-import marked from 'marked';
-import parse from "html-react-parser";
-
-const sanitizeHtml = lazy(()=>import('sanitize-html'));
+import MDEditor from '@uiw/react-md-editor';
+import React from "react";
 
 const Render = ({ markdown }) => {
   const styles = {
@@ -11,8 +7,9 @@ const Render = ({ markdown }) => {
   };
   return( 
   <div className="p-4 m-4 mt-4 shadow-lg" style={styles}>
-    {markdown && parse(sanitizeHtml(marked(markdown)))}
-  </div>);
+    { markdown && <MDEditor.Markdown source={markdown} /> }
+  </div>
+  );
 };
 
 export default Render;
