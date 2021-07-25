@@ -46,6 +46,7 @@ function CreatePost() {
                 thumbnail: url,
                 date: date,
                 author: user.uid,
+                likes: []
               })
               .then(() => {
                 setMessage("Post Created Successfully");
