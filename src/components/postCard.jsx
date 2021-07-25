@@ -1,6 +1,7 @@
 import { AuthContext, FirebaseContext } from "../store/Context";
 import React, { useContext, useEffect, useState } from "react";
 
+import Firebase from "firebase";
 import { Link } from "react-router-dom";
 
 import("./styles/card.css");
@@ -9,11 +10,12 @@ function PostCard({ post, page, handleDeletePost }) {
   const { user } = useContext(AuthContext);
   const { firebase } = useContext(FirebaseContext);
   const [liked, setLiked] = useState(false);
-  
-  const Firestore = firebase.firestore;
+  const [likes, setLikes] = useState(0);
+
   const db = firebase.firestore();
 
   useEffect(() => {
+    setLikes(post.likes.length);
     post.likes.forEach((el) => {
       if (el === user.uid) return setLiked(true);
     });
@@ -26,9 +28,12 @@ function PostCard({ post, page, handleDeletePost }) {
       postsRef
         .doc(post.id)
         .update({
-          likes: Firestore.FieldValue.arrayRemove(user.uid),
+          likes: Firebase.firestore.FieldValue.arrayRemove(user.uid),
         })
-        .then(() => setLiked(false))
+        .then(() => {
+          setLikes(likes - 1);
+          setLiked(false);
+        })
         .catch((err) => {
           alert(err.message);
         });
@@ -36,9 +41,12 @@ function PostCard({ post, page, handleDeletePost }) {
       postsRef
         .doc(post.id)
         .update({
-          likes: Firestore.FieldValue.arrayUnion(user.uid),
+          likes: Firebase.firestore.FieldValue.arrayUnion(user.uid),
         })
-        .then(() => setLiked(true))
+        .then(() => {
+          setLikes(likes + 1);
+          setLiked(true);
+        })
         .catch((err) => alert(err.message));
     }
   };
@@ -58,16 +66,17 @@ function PostCard({ post, page, handleDeletePost }) {
             />
           )}
           <div className="card-body">
-            <h5 className="card-title">
-              {post.title}{" "}
-              <span role="button" onClick={like}>
-                {liked ? (
-                  <i className="fa fa-heart text-danger"></i>
-                ) : (
-                  <i className="fal fa-heart"></i>
-                )}{" "}
-              </span>
-            </h5>
+            <h5 className="card-title">{post.title}</h5>
+            <span className="card-text fw-bold">{likes} {likes === 1 ? "Like" : "Likes" }</span>
+            {"  "}
+            <span role="button" onClick={like}>
+              {liked ? (
+                <i className="fa fa-heart text-danger like-icon jump like-icon-solid"></i>
+              ) : (
+                <i className="fal fa-heart like-icon rotate like-icon-light"></i>
+              )}
+            </span>
+            <br />
             <span className="card-text">{post.shortDescription}</span>
             <br />
             <time dateTime={post.date} className="text-muted">

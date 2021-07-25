@@ -29,6 +29,8 @@ function PostForm({ functions }) {
           <textarea
             className="form-control shadow-lg"
             placeholder="Start Writing..."
+            minLength="20"
+            maxLength="40"
             id="description"
             aria-required="true"
             required
