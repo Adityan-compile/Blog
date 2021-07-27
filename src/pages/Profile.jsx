@@ -1,6 +1,6 @@
-import React, { useEffect, useContext, useState, lazy } from "react";
 import { AuthContext, FirebaseContext } from "../store/Context";
-import { useHistory } from "react-router";
+import { Link, useHistory } from "react-router-dom";
+import React, { lazy, useContext, useEffect, useState } from "react";
 
 const PostCard = lazy(()=>import("../components/postCard"));
 
@@ -86,7 +86,7 @@ function Profile() {
         <h3 className="text-center">Name: {user.displayName}</h3>
         <h3 className="text-center">Email: {user.email}</h3>
         <span className="p-2">
-          <button className="btn btn-warning">Edit Account</button>
+          <Link className="btn btn-warning" to={'/account/password/change'}>Change Password</Link>
         </span>
         <span className="p-2">
           <button className="btn btn-danger" onClick={deleteAccount}>

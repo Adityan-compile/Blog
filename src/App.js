@@ -4,6 +4,7 @@ import React, { useContext, useEffect } from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 import Browse from "./pages/Browse";
+import ChangePassword from './pages/ChangePassword';
 import CreatePost from "./pages/CreatePost";
 import Error from "./pages/error";
 import Home from "./pages/Home";
@@ -55,11 +56,17 @@ function App() {
             </RouteGuard>
           </Route>
 
+          <Route path={['/account/password/change']}>
+              <RouteGuard User={user}>
+                  <ChangePassword />
+              </RouteGuard>
+          </Route>
+
           <Route path={["/search", "/posts/search"]} component={SearchPage} />
 
           <Route path={["/browse", "/posts/browse"]} component={Browse} />
 
-          {user && <Route path={"/posts/view/:id"} component={ViewPost} />}
+          {/* {user && */} <Route path={"/posts/view/:id"} component={ViewPost} /> {/*} */}
 
           <Route component={Error} />
         </Switch>
