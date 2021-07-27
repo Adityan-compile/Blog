@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 
 function PostForm({ functions }) {
-  // const [title, setTitle] = useState("");
-  // const [description, setDescription] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
-  // console.info(functions)
   return (
     <div className="p-4">
       <form>
@@ -58,7 +55,7 @@ function PostForm({ functions }) {
               />
               <div id="fileHelp" className="form-text">
                 Make Sure to Upload High Resolution Rectangular Images For
-                Maximum Quality.
+                Maximum Quality. You Won't Be Able to Change it Later
               </div>
             </div>
             <div className="col-md-6 p-2">

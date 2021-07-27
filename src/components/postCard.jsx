@@ -27,9 +27,9 @@ function PostCard({ post, page, handleDeletePost }) {
     if (liked) {
       postsRef
         .doc(post.id)
-        .update({
+        .set({
           likes: Firebase.firestore.FieldValue.arrayRemove(user.uid),
-        })
+        }, { merge: true })
         .then(() => {
           setLikes(likes - 1);
           setLiked(false);
@@ -83,22 +83,28 @@ function PostCard({ post, page, handleDeletePost }) {
               - {post.date || new Date().toLocaleDateString("en-IN")}
             </time>
             <br />
-            {page === "profile" && (
-              <span className="p-2">
-                <button
-                  className="btn btn-danger"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleDeletePost(post.id);
-                  }}
-                >
-                  Delete Post
-                </button>
-              </span>
-            )}
-            <span className="streched-link text-dark fw-bold">
+            {page === "profile" ? (
+              <section>
+                <span className="p-2">
+                  <button
+                    className="btn btn-danger"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleDeletePost(post.id);
+                    }}
+                  >
+                    Delete Post
+                  </button>
+                </span>
+                <span>
+                  <Link className="btn btn-warning" to={`/posts/edit/${post.id}`}>Edit Post</Link>
+                </span>
+              </section>
+            ) : (
+              <span className="streched-link text-dark fw-bold">
               Read More ...
             </span>
+            )}
           </div>
         </div>
       </Link>
