@@ -98,10 +98,9 @@ function Profile() {
         <h1 className="text-center title-text p-2 mb-2">Your Posts</h1>
         <div className="row">
           {posts.map((res) => (
-            <div className="col-md-6 mx-auto p-4" id={res.id}>
+            <div className="col-md-6 mx-auto p-4" id={res.id} key={res.id}>
               <PostCard
                 post={res}
-                key={res.id}
                 page="profile"
                 handleDeletePost={deletePost}
               />

@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useContext, lazy } from "react";
+import React, { lazy, useContext, useEffect, useState } from "react";
+
 import { FirebaseContext } from "../store/Context";
 
 const PostCard  = lazy(()=>import("../components/postCard"));
@@ -34,8 +35,8 @@ function Browse() {
       <div className="posts">
         <div className="row">
           {posts.map((res, idx) => (
-            <div className="col-md-6 mx-auto p-4">
-            <PostCard post={res} key={idx} />
+            <div className="col-md-6 mx-auto p-4" key={res.id}>
+            <PostCard post={res}/>
             </div>
           ))}
         </div>

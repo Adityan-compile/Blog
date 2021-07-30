@@ -1,8 +1,9 @@
 import React, { Fragment, lazy, useState } from "react";
-const MDEditor = lazy(()=>import("@uiw/react-md-editor"));
+const MDEditor = lazy(() => import("@uiw/react-md-editor"));
 
 function Editor({ Handler }) {
   const [text, setText] = useState("");
+
   const handler = (val) => {
     Handler(val);
     setText(val);
