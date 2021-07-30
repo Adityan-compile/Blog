@@ -1,8 +1,8 @@
 import { AuthContext, FirebaseContext } from "../store/Context";
+import { Link, useHistory } from "react-router-dom";
 import React, { useContext, useEffect, useState } from "react";
 
-import Firebase from "firebase";
-import { Link } from "react-router-dom";
+import Firebase from "firebase/app";
 
 import("./styles/card.css");
 
@@ -13,6 +13,7 @@ function PostCard({ post, page, handleDeletePost }) {
   const [likes, setLikes] = useState(0);
 
   const db = firebase.firestore();
+  const history = useHistory();
 
   useEffect(() => {
     setLikes(post.likes.length);
@@ -97,7 +98,10 @@ function PostCard({ post, page, handleDeletePost }) {
                   </button>
                 </span>
                 <span>
-                  <Link className="btn btn-warning" to={`/posts/edit/${post.id}`}>Edit Post</Link>
+                  <button className="btn btn-warning" onClick={(e)=>{
+                    e.preventDefault();
+                    history.push(`/posts/edit/${post.id}`);
+                }}>Edit Post</button>
                 </span>
               </section>
             ) : (
