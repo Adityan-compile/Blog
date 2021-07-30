@@ -1,4 +1,5 @@
-import React, { useState, useContext, useEffect, lazy } from "react";
+import React, { lazy, useContext, useEffect, useState } from "react";
+
 import { FirebaseContext } from "../store/Context";
 
 const PostCard = lazy(()=>import("./postCard"));
@@ -70,7 +71,6 @@ function Search() {
             id="button-addon2"
             onClick={search}
           >
-            Search 
             <i className="fa fa-search"></i>
           </button>
         </div>
