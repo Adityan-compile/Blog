@@ -1,8 +1,7 @@
-import React, { lazy, useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { FirebaseContext } from "../store/Context";
-
-const PostCard = lazy(()=>import("./postCard"));
+import PostCard from "./postCard";
 
 function Search() {
   const [query, setQuery] = useState("");

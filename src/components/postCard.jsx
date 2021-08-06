@@ -15,12 +15,14 @@ function PostCard({ post, page, handleDeletePost }) {
   const db = firebase.firestore();
   const history = useHistory();
 
+  const userId = user ? user.uid : "";
+
   useEffect(() => {
     setLikes(post.likes.length);
     post.likes.forEach((el) => {
-      if (el === user.uid) return setLiked(true);
+      if (el === userId) return setLiked(true);
     });
-  }, [user, post]);
+  }, [userId, post]);
 
   const like = (e) => {
     e.preventDefault();

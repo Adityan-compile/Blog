@@ -1,8 +1,8 @@
 import { AuthContext, FirebaseContext } from "../store/Context";
 import { Link, useHistory } from "react-router-dom";
-import React, { lazy, useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
-const PostCard = lazy(()=>import("../components/postCard"));
+import PostCard from "../components/postCard";
 
 function Profile() {
   const { user } = useContext(AuthContext);

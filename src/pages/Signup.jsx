@@ -1,6 +1,5 @@
-import React, { lazy } from 'react';
-
-const SignupForm = lazy(()=>import('../components/signupForm'));
+import React from 'react';
+import SignupForm from '../components/signupForm';
 
 function Signup() {
     return (

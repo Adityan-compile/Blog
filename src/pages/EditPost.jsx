@@ -1,9 +1,8 @@
-import React, { lazy, useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
+import EditPostForm from "../components/editPostForm";
 import { FirebaseContext } from "../store/Context";
 import { useHistory } from "react-router";
-
-const EditPostForm = lazy(()=>import("../components/editPostForm"));
 
 function EditPost({ id, err, Post }) {
   const [post,setPost] = useState({});

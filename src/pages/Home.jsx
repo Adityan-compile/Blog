@@ -1,8 +1,6 @@
-import React, { lazy } from 'react';
-
-const Cover = lazy(()=>import('../components/cover'));
-const Recommended = lazy(()=>import('../components/recommended'));
-
+import Cover from '../components/cover';
+import React from 'react';
+import Recommended from '../components/recommended';
 
 function Home() {
     return (

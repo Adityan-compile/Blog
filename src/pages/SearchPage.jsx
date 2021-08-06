@@ -1,6 +1,5 @@
-import React, { lazy } from 'react';
-
-const Search = lazy(()=>import('../components/search'));
+import React from 'react';
+import Search from '../components/search';
 
 function SearchPage() {
     return (

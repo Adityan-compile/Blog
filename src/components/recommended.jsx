@@ -1,9 +1,8 @@
-import React, { lazy, useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { FirebaseContext } from "../store/Context";
+import PostCard from "./postCard";
 import sortBy from "lodash/sortBy";
-
-const PostCard = lazy(()=>import("./postCard"));
 
 function Recommended() {
   const { firebase } = useContext(FirebaseContext);

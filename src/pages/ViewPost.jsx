@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useContext, lazy } from "react";
-import { useHistory } from "react-router";
-import { FirebaseContext } from "../store/Context";
+import React, { useContext, useEffect, useState } from "react";
 
-const Render = lazy(()=>import("../components/render"));
+import { FirebaseContext } from "../store/Context";
+import Render from "../components/render";
+import { useHistory } from "react-router";
 
 function ViewPost(props) {
   const history = useHistory();

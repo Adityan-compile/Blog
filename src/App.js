@@ -22,6 +22,7 @@ function App() {
   const { firebase } = useContext(FirebaseContext);
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
+      console.log("Auth state Changed", user);
       setUser(user);
     });
   });
