@@ -1,0 +1,37 @@
+.home-text {
+  font-weight: bolder;
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.home-text span {
+  font-family: "Dancing Script", cursive;
+  font-size: 3rem;
+}
+
+
+.cover {
+  height: 400px;
+  width: 100%;
+  filter: grayscale(40%);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  text-align: center;
+  background-image: var(--cover-image);
+}
+
+@media (max-width: 760px) {
+  .cover {
+    height: 350px;
+    width: 100%;
+    background-image: var(--cover-image);
+    filter: grayscale(40%);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    text-align: center;
+  }
+}

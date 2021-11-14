@@ -1,0 +1,78 @@
+.card:hover {
+  transform: scale(1.05);
+}
+
+.like-icon:hover {
+  transform: scale(1.2);
+}
+
+.like-icon{
+    font-size: 1.5rem;
+}
+
+.rotate:hover{
+    animation: rotate 0.5s ease-in;
+    color: rgb(247, 33, 33);
+}
+
+.like-icon-solid:hover{
+    color: rgb(0, 0, 0);
+}
+
+.jump{
+    animation: jump 1s ease-in;
+}
+
+@keyframes jump{
+    0%{
+        transform: scale(0);
+    }
+    50%{
+        transform: scale(1.5);
+    }
+    100%{
+        transform: scale(0);
+    }
+}
+
+@keyframes rotate {
+    from{
+        transform: rotate(0deg);
+    }to{
+        transform: rotate(360deg);
+    }
+}
+
+/* @keyframes rotate {
+  10% {
+    transform: rotate(36deg);
+  }
+
+  20% {
+    transform: rotate(36deg);
+  }
+  30% {
+    transform: rotate(36deg);
+  }
+  40% {
+    transform: rotate(36deg);
+  }
+  50% {
+    transform: rotate(36deg);
+  }
+  60% {
+    transform: rotate(36deg);
+  }
+  70% {
+    transform: rotate(36deg);
+  }
+  80% {
+    transform: rotate(36deg);
+  }
+  90% {
+    transform: rotate(36deg);
+  }
+  100% {
+    transform: rotate(36deg);
+  }
+} */
