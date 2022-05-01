@@ -95,6 +95,14 @@ function Profile() {
             Delete Account
           </button>
         </span>
+        <span className="p-2">
+          <button
+            className="btn btn-primary"
+            onClick={() => history.push("/account/user/settings")}
+          >
+            Change Profile
+          </button>
+        </span>
       </div>
       <div className="posts pt-3">
         <h1 className="text-center title-text p-2 mb-2">Your Posts</h1>

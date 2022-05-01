@@ -16,6 +16,7 @@ import Profile from "./pages/Profile";
 import SearchPage from "./pages/SearchPage";
 import Signup from "./pages/Signup";
 import ViewPost from "./pages/ViewPost";
+import ChangeUserProfile from "./pages/changeuserprofile";
 
 function App() {
   const { user, setUser } = useContext(AuthContext);
@@ -56,6 +57,11 @@ function App() {
           <Route path={["/account/password/change"]}>
             <RouteGuard User={user}>
               <ChangePassword />
+            </RouteGuard>
+          </Route>
+          <Route path={["/account/user/settings"]}>
+            <RouteGuard User={user}>
+              <ChangeUserProfile />
             </RouteGuard>
           </Route>
           <Route
