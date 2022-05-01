@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { AuthContext, FirebaseContext } from "../store/Context";
 
-import ("./styles/navbar.css");
+import("./styles/navbar.css");
 
 function Navbar() {
   const history = useHistory();
@@ -22,7 +22,7 @@ function Navbar() {
   };
   return (
     <header>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-lg">
+      <nav className="navbar navbar-expand-lg dark-theme-text shadow-lg">
         <div className="container-fluid">
           <Link className="navbar-brand" to={"/"}>
             <span className="brand-text">&lt;Codable/&gt;</span>
@@ -38,51 +38,66 @@ function Navbar() {
           >
             <i className="fa fa-bars nav-btn"></i>
           </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
+          <div className="collapse navbar-collapse " id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to={"/"}>
+                <Link
+                  className="nav-link active dark-theme-text"
+                  aria-current="page"
+                  to={"/"}
+                >
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to={"/search"}>
+                <Link
+                  className="nav-link active dark-theme-text"
+                  aria-current="page"
+                  to={"/search"}
+                >
                   Search
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to={"/posts/browse"}>
+                <Link
+                  className="nav-link active dark-theme-text"
+                  aria-current="page"
+                  to={"/posts/browse"}
+                >
                   Browse
                 </Link>
               </li>
-                {user ? (
-                    <li className="nav-item">
-                      <Link
-                        className="nav-link active"
-                        aria-current="page"
-                        to={"/user/profile"}
-                      >
-                        <span className="fw-bold">{user.displayName}</span>
-                      </Link>
-                    </li>
-                ) : (
-                  <li className="nav-item">
-                    <Link
-                      className="nav-link active"
-                      aria-current="page"
-                      to={"/login"}
-                    >
-                      Login
-                    </Link>
-                  </li>
-                )}
-                {user && (
-                  <li className="nav-item">
-                    <span role="button" className="nav-link active" onClick={logout}>
-                      <span>Logout</span>
-                    </span>
-                  </li>
-                )}
+              {user ? (
+                <li className="nav-item">
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
+                    to={"/user/profile"}
+                  >
+                    <span className="fw-bold">{user.displayName}</span>
+                  </Link>
+                </li>
+              ) : (
+                <li className="nav-item">
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
+                    to={"/login"}
+                  >
+                    Login
+                  </Link>
+                </li>
+              )}
+              {user && (
+                <li className="nav-item">
+                  <button
+                    className="nav-link active btn btn-primary"
+                    onClick={logout}
+                  >
+                    Logout
+                  </button>
+                </li>
+              )}
             </ul>
           </div>
         </div>

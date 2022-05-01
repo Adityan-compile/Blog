@@ -1,13 +1,27 @@
-
-.nav-btn{
-    font-size: 2rem;
+.nav-btn {
+  font-size: 2rem;
 }
 
-.navbar-nav{
-   margin-left: auto;
+.navbar-nav {
+  margin-left: auto;
 }
 
-.brand-text{
-    font-family: 'Dancing Script', cursive;
-    font-size: 2.3rem;    
+.brand-text {
+  font-family: "Dancing Script", cursive;
+  font-size: 2.3rem;
+}
+
+.dark-theme-text {
+  background-color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  header {
+    background-color: black;
   }
+
+  .dark-theme-text {
+    background-color: black;
+    color: lightblue;
+  }
+}
