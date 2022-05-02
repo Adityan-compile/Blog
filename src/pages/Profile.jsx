@@ -86,11 +86,21 @@ function Profile() {
         <h3 className="text-center">Name: {user.displayName}</h3>
         <h3 className="text-center">Email: {user.email}</h3>
         <span className="p-2">
-          <Link className="btn btn-warning" to={'/account/password/change'}>Change Password</Link>
+          <Link className="btn btn-warning" to={"/account/password/change"}>
+            Change Password
+          </Link>
         </span>
         <span className="p-2">
           <button className="btn btn-danger" onClick={deleteAccount}>
             Delete Account
+          </button>
+        </span>
+        <span className="p-2">
+          <button
+            className="btn btn-primary"
+            onClick={() => history.push("/account/user/settings")}
+          >
+            Change Profile
           </button>
         </span>
       </div>

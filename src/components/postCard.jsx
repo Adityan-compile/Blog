@@ -30,9 +30,12 @@ function PostCard({ post, page, handleDeletePost }) {
     if (liked) {
       postsRef
         .doc(post.id)
-        .set({
-          likes: Firebase.firestore.FieldValue.arrayRemove(user.uid),
-        }, { merge: true })
+        .set(
+          {
+            likes: Firebase.firestore.FieldValue.arrayRemove(user.uid)
+          },
+          { merge: true }
+        )
         .then(() => {
           setLikes(likes - 1);
           setLiked(false);
@@ -44,7 +47,7 @@ function PostCard({ post, page, handleDeletePost }) {
       postsRef
         .doc(post.id)
         .update({
-          likes: Firebase.firestore.FieldValue.arrayUnion(user.uid),
+          likes: Firebase.firestore.FieldValue.arrayUnion(user.uid)
         })
         .then(() => {
           setLikes(likes + 1);
@@ -55,7 +58,7 @@ function PostCard({ post, page, handleDeletePost }) {
   };
 
   return (
-    <div className="container text-center">
+    <div className="container text-center ">
       <Link to={`/posts/view/${post.id}`} className="text-decoration-none">
         <div
           className="card shadow-lg mx-auto rounded text-dark text-decoration-none"
@@ -70,7 +73,9 @@ function PostCard({ post, page, handleDeletePost }) {
           )}
           <div className="card-body">
             <h5 className="card-title">{post.title}</h5>
-            <span className="card-text fw-bold">{likes} {likes === 1 ? "Like" : "Likes" }</span>
+            <span className="card-text fw-bold">
+              {likes} {likes === 1 ? "Like" : "Likes"}
+            </span>
             {"  "}
             <span role="button" onClick={like}>
               {liked ? (
@@ -100,16 +105,21 @@ function PostCard({ post, page, handleDeletePost }) {
                   </button>
                 </span>
                 <span>
-                  <button className="btn btn-warning" onClick={(e)=>{
-                    e.preventDefault();
-                    history.push(`/posts/edit/${post.id}`);
-                }}>Edit Post</button>
+                  <button
+                    className="btn btn-warning"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      history.push(`/posts/edit/${post.id}`);
+                    }}
+                  >
+                    Edit Post
+                  </button>
                 </span>
               </section>
             ) : (
               <span className="streched-link text-dark fw-bold">
-              Read More ...
-            </span>
+                Read More ...
+              </span>
             )}
           </div>
         </div>
